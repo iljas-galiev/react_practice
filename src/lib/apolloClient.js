@@ -1,7 +1,7 @@
 import {ApolloClient, InMemoryCache, createHttpLink, ApolloLink} from '@apollo/client';
 
 const httpLink = createHttpLink({
-  uri: 'http://trello-rails.herokuapp.com/graphql',
+  uri: 'https://trello-rails.herokuapp.com/graphql',
 });
 const authLink = new ApolloLink((operation, forward) => {
   // Retrieve the authorization token from local storage.

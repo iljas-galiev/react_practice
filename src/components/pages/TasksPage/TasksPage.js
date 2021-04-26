@@ -66,7 +66,7 @@ const TasksPage = () => {
     const search = useLocation().search;
     const archived = new URLSearchParams(search).get('archived');
 
-    const {cards} = useCards(archived);
+    const {cards, loading} = useCards(archived);
 
     let empty_header;
     let archived_link;
@@ -77,6 +77,13 @@ const TasksPage = () => {
     if (archived !== undefined && archived)
         archived_link = <Link to={routes.CARDS} className="btn btn-success">Показать все</Link>;
     else archived_link = <Link to={routes.CARDS + '?archived=1'} className="btn btn-warning">Архивные</Link>;
+
+
+    if(loading) return (
+        <DefaultTemplate>
+            <h2 className="text-center">Загрузка...</h2>
+        </DefaultTemplate>
+    );
 
     return (
         <DefaultTemplate>
